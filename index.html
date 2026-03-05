@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>后裔AI — 智能助手</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Smiley Sans';
+      src: url('/assets/smiley-sans.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --lobster-1: #c44a1e;
+      --lobster-2: #d4622e;
+      --lobster-3: #c8713a;
+      --lobster-4: #d4895a;
+      --bg-dark: #0a0a0f;
+      --bg-card: #1c1c28;
+      --bg-card-hover: #222236;
+      --border: rgba(255, 255, 255, 0.1);
+      --border-hover: rgba(180, 80, 40, 0.5);
+      --text: #f0ede8;
+      --text-muted: #9a9590;
+    }
+
+    /* 浅色模式变量 */
+    [data-theme="light"] {
+      --bg-dark: #f5f3ef;
+      --bg-card: #ffffff;
+      --bg-card-hover: #fff8f5;
+      --border: rgba(180, 80, 40, 0.18);
+      --border-hover: rgba(180, 80, 40, 0.45);
+      --text: #1a1a1a;
+      --text-muted: #666058;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme="dark"]) {
+        --bg-dark: #f5f3ef;
+        --bg-card: #ffffff;
+        --bg-card-hover: #fff8f5;
+        --border: rgba(180, 80, 40, 0.18);
+        --border-hover: rgba(180, 80, 40, 0.45);
+        --text: #1a1a1a;
+        --text-muted: #666058;
+      }
+    }
+
+    /* 主题切换按钮 */
+    .lang-toggle {
+      position: fixed;
+      top: 16px;
+      right: 68px;
+      z-index: 100;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 4px 9px;
+      border-radius: 99px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+    .lang-toggle:hover {
+      border-color: var(--lobster-3);
+      color: var(--lobster-3);
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      z-index: 100;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .theme-toggle:hover {
+      border-color: var(--border-hover);
+      color: var(--lobster-3);
+      transform: scale(1.05);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body { overflow-x: hidden;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    h1, h2, .hero-title, .card-title {
+      font-family: 'Smiley Sans', 'ZCOOL KuaiLe', 'LXGW WenKai', 'Noto Sans SC', sans-serif;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 20%, rgba(255, 69, 0, 0.07) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(255, 107, 53, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 0%, rgba(255, 140, 66, 0.08) 0%, transparent 40%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,100,50,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,100,50,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    header {
+      padding: 20px 0 8px;
+      text-align: center;
+    }
+
+    .logo-area {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--lobster-1), var(--lobster-3));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 0 20px rgba(255, 69, 0, 0.4);
+    }
+
+    .logo-text { text-align: left; }
+
+    .logo-text h1 {
+      font-size: 26px;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--lobster-1), var(--lobster-4));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text p {
+      font-size: 13px;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+
+    .hero-title {
+      font-size: clamp(20px, 3.5vw, 32px);
+      font-weight: normal;
+      line-height: 1.2;
+      margin-bottom: 8px;
+      letter-spacing: 0;
+    }
+
+    .hero-title .gradient {
+      background: linear-gradient(90deg, var(--lobster-1) 0%, var(--lobster-3) 50%, #ffb347 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+      margin: 12px 0 6px;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      border-radius: 99px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+    }
+    .hero-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin: 0 auto 14px;
+      line-height: 1.5;
+    }
+
+    .divider {
+      width: 50px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--lobster-1), var(--lobster-3));
+      border-radius: 2px;
+      margin: 0 auto 18px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+      gap: 16px;
+      padding-bottom: 24px;
+    }
+
+    @media (min-width: 900px) {
+      .cards { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 22px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--lobster-1), var(--lobster-3));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25), 0 0 12px rgba(255, 69, 0, 0.08);
+    }
+
+    .card:hover::before { opacity: 1; }
+
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 69, 0, 0.12);
+      border: 1px solid rgba(255, 69, 0, 0.25);
+      color: var(--lobster-3);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+
+    .card-emoji {
+      font-size: 28px;
+      margin-bottom: 8px;
+      display: block;
+      filter: drop-shadow(0 0 12px rgba(255,100,50,0.5));
+    }
+
+    .card-domain {
+      font-size: 13px;
+      color: var(--lobster-3);
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-size: 22px;
+      font-weight: 400;
+      font-style: normal;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      flex: 1;
+      margin-bottom: 16px;
+    }
+
+    .card-desc strong {
+      color: var(--lobster-4);
+      font-weight: 600;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .tag {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text-muted);
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 10px;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 11px 22px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--lobster-1);
+      color: #fff;
+      box-shadow: none;
+    }
+
+    .btn-primary:hover {
+      background: var(--lobster-2);
+      box-shadow: none;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 100, 50, 0.1);
+      border: 1px solid rgba(255, 100, 50, 0.4);
+      color: var(--lobster-3);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,100,50,0.4);
+      color: var(--lobster-3);
+    }
+
+    /* 生态工具分区 */
+    .eco-section { padding-bottom: 28px; }
+
+    .eco-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .eco-divider::before, .eco-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .eco-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .eco-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 640px) {
+      .eco-cards { grid-template-columns: 1fr; }
+    }
+
+    .eco-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.25s ease;
+    }
+    .eco-card:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
+    .eco-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: rgba(180,80,40,0.08);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .eco-info { flex: 1; min-width: 0; }
+    .eco-domain {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--lobster-3);
+      margin-bottom: 3px;
+    }
+    .eco-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      font-family: 'DM Serif Display', serif;
+    }
+    .eco-desc {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .btn-eco {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      background: rgba(180,80,40,0.08);
+      border: 1px solid var(--border);
+      color: var(--lobster-3);
+      transition: all 0.2s ease;
+    }
+    .btn-eco:hover {
+      background: rgba(180,80,40,0.15);
+      border-color: var(--border-hover);
+    }
+
+    /* 多Agent配置卡片 */
+    .agent-config-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .agent-config-card:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
+    .agent-config-left { display: flex; align-items: center; gap: 16px; flex: 1; min-width: 0; }
+    .agent-config-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .btn-copy {
+      background: var(--lobster-1);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 9px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-copy:hover { background: var(--lobster-2); }
+    .copy-hint {
+      font-size: 12px;
+      color: #4caf50;
+      font-weight: 500;
+      display: none;
+    }
+    .copy-hint.show { display: block; }
+    @media (max-width: 640px) {
+      .agent-config-card { flex-direction: column; align-items: flex-start; }
+      .agent-config-right { align-items: flex-start; }
+    }
+
+    footer {
+      z-index: 1;
+      text-align: center;
+      padding: 30px 0 40px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    footer p { color: var(--text-muted); font-size: 13px; }
+    footer a { color: var(--lobster-3); text-decoration: none; }
+
+    .particle {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      animation: float linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      10% { opacity: 0.6; }
+      90% { opacity: 0.3; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 40px 0 10px; }
+      .hero-title { font-size: 28px; }
+      .hero-features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+      margin: 12px 0 6px;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      border-radius: 99px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+    }
+    .hero-sub { font-size: 15px; }
+      .cards { grid-template-columns: 1fr; gap: 20px; }
+      .card { padding: 28px 24px; }
+      .card-title { font-size: 20px; }
+      .btn { padding: 10px 18px; font-size: 13px; }
+    }
+  .qr-link {
+      font-size: 13px;
+      text-decoration: none;
+      opacity: 0.85;
+      color: var(--text-muted);
+    }
+    .qr-link:hover { opacity: 1; text-decoration: underline; }
+    .qr-link-wrap { display: block; }
+    body.lang-en .qr-link-wrap { display: none; }
+
+    
+    
+    /* 手机端三个版本紧凑布局 */
+    @media (max-width: 600px) { .mobile-hide { display: none !important; } }
+    @media (max-width: 600px) {
+      .cards { grid-template-columns: 1fr !important; gap: 8px !important; }
+      .card { padding: 12px !important; }
+      .cards .card .card-emoji,
+      .cards .card span.card-emoji { display: none !important; visibility: hidden !important; height: 0 !important; overflow: hidden !important; }
+      .card .card-domain { font-size: 10px !important; margin-bottom: 2px !important; }
+      .card .card-title { font-size: 15px !important; margin-bottom: 4px !important; }
+      .card .card-title small { font-size: 11px !important; }
+      .card .card-desc {
+        font-size: 12px !important; line-height: 1.5 !important;
+        display: -webkit-box; -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical; overflow: hidden;
+        word-break: break-word; overflow-wrap: break-word; max-width: 100%;
+      }
+      .card hr { margin: 6px 0 !important; }
+      .card .card-tags { gap: 4px !important; flex-wrap: wrap; }
+      .card .tag { font-size: 10px !important; padding: 2px 5px !important; }
+      .card .card-actions { flex-wrap: wrap; gap: 5px !important; margin-top: 0 !important; }
+      .card .card-actions .btn { flex: 1; min-width: 70px; font-size: 11px !important; padding: 6px 6px !important; text-align: center; justify-content: center !important; }
+      
+      /* 手机端进一步压缩 */
+      /* 手机端 hero 标题压缩 */
+      .hero { padding: 16px 16px 12px !important; }
+      .hero-logo { height: 28px !important; margin-bottom: 8px !important; }
+      .hero-title { font-size: 18px !important; line-height: 1.3 !important; margin-bottom: 6px !important; }
+      .hero-subtitle { font-size: 11px !important; line-height: 1.4 !important; }
+
+      .card .card-tags { display: none !important; }
+      .card .card-desc { -webkit-line-clamp: 3 !important; }
+      .card hr:not(:last-of-type) { display: none !important; }
+      /* 手机端二维码改为弹出方式 */
+      .qr-link-wrap { display: none !important; }
+      /* 改用文字触发 */
+      .qr-mobile-trigger { display: flex !important; }
+
+    }
+
+    </style>
+  <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <div id="particles"></div>
+  <button class="theme-toggle" id="themeToggle" title="切换主题">🌙</button>
+  <button class="lang-toggle" id="langToggle" onclick="toggleLang()">EN</button>
+
+  <div class="container">
+    <header>
+      <div class="logo-area">
+        <img src="https://easyclaw.work/logo.svg" alt="后裔AI" style="height:40px;width:auto;">
+        <div class="logo-text">
+          <h1>后裔AI</h1>
+          <p>Built on OpenClaw</p>
+        </div>
+      </div>
+      <h2 class="hero-title" id="hero-title">
+        选择你的 <span class="gradient">AI 龙虾</span>，开启智能新时代
+      </h2>
+      <p class="hero-sub" id="hero-sub">全系列 AI 产品，企业云端 · 个人桌面 · 国内外版本全覆盖</p>
+      <div class="hero-features">
+        <span class="hero-pill">无需命令行</span>
+        <span class="hero-pill">无需自己部署</span>
+        <span class="hero-pill">模型自由切换</span>
+        <span class="hero-pill">一键即用</span>
+      </div>
+      <div class="divider"></div>
+    </header>
+
+    <div class="cards">
+
+      <!-- 企业版 -->
+      <div class="card" onclick="this.querySelector('.btn-primary').click()" style="cursor:pointer">
+        <span class="card-badge" data-zh="☁️ 云端版" data-en="🏢 Enterprise">☁️ 云端版</span>
+        <span class="card-emoji mobile-hide" style="font-size:0;"><img src="/assets/easyclaw-logo.svg" style="width:60px;height:60px;object-fit:contain;display:block;margin:0 auto;"></span>
+        <div class="card-domain">后裔AI.work</div>
+        <h3 class="card-title" data-zh="后裔AI 云端版" data-en="后裔AI Cloud<br><small style='font-size:14px;font-weight:500;color:var(--text-muted)'>Cloud Edition</small>">后裔AI 云端版</h3>
+        <p class="card-desc" data-zh="☁️ <strong>无需个人电脑</strong>，龙虾跑在云端，手机控制。基于 <strong>OpenClaw</strong> — 无需命令行，全球顶流模型自由切换，按量计费。" data-en="<strong>No download needed</strong> — your AI agent runs on its own cloud server.<br>Integrates with <strong>Lark, WeCom, Telegram</strong> and more. Switch between top global models freely. <strong>Pay as you go</strong> with credits.">
+          ☁️ <strong>无需个人电脑</strong>，龙虾跑在云端，手机控制。基于 <strong>OpenClaw</strong> — 无需命令行，全球顶流模型自由切换，按量计费。
+        </p>
+        <hr style="border:none;border-top:1px solid #f0ece8;margin:12px 0 10px;">
+        <div class="card-actions" style="gap:8px;">
+          <a class="btn btn-primary" href="https://easyclaw.work" style="flex:7;justify-content:center;" target="_blank" data-zh="自助体验" data-en="Get Started"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:-2px;margin-right:5px;"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>自助体验</a>
+          <a class="btn btn-secondary" href="https://cheetah-mobile.feishu.cn/share/base/form/shrcnjff5qZkoyl3mE9wGJDqqlP" style="flex:3;justify-content:center;" target="_blank" onclick="event.stopPropagation()" data-zh="企业采购" data-en="Enterprise"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:-2px;margin-right:5px;"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>企业采购</a>
+        </div>
+        <hr style="border:none;border-top:1px solid #f0ece8;margin:12px 0 10px;">
+        <div class="qr-link-wrap" style="margin-top:14px;display:flex;align-items:center;gap:12px;">
+          <img src="/assets/qr-enterprise.png" style="width:140px;height:140px;border-radius:8px;border:1px solid #e8e4df;flex-shrink:0;">
+          <span style="font-size:12px;color:var(--text-muted);line-height:1.5;">扫码加入<br>企业版交流群</span>
+        </div>
+      <div class="qr-mobile-trigger" style="display:none;margin-top:8px;">
+          <a href="javascript:void(0)" onclick="showQR('/assets/qr-enterprise.png','云端版交流群');event.stopPropagation()" class="qr-link" style="font-size:12px;">👥 扫码入交流群</a>
+        </div>
+      </div>
+
+      <!-- 国际桌面版 -->
+      <div class="card card-intl" onclick="this.querySelector('.btn-primary').click()" style="cursor:pointer">
+        <span class="card-badge" data-zh="🌍 国际版" data-en="🌍 International">🌍 国际版</span>
+        <span class="card-emoji mobile-hide" style="font-size:0;"><img src="/assets/easyclaw-desktop-logo.png" style="width:60px;height:60px;object-fit:contain;display:block;margin:0 auto;filter:saturate(0.6);"></span>
+        <div class="card-domain">后裔AI.com</div>
+        <h3 class="card-title" data-zh="后裔AI 桌面版" data-en="后裔AI Desktop<br><small style='font-size:14px;font-weight:500;color:var(--text-muted)'>International</small>">后裔AI 桌面版</h3>
+        <p class="card-desc" data-zh="💻 <strong>下载到自己的电脑</strong>，手机控制。基于 <strong>OpenClaw</strong> — 无需命令行，全球顶流模型自由切换，Windows &amp; macOS 全支持。" data-en="<strong>Windows &amp; macOS</strong> desktop app for international users. Built on the <strong>OpenClaw framework</strong>. Switch between top global AI models with one click.">
+          💻 <strong>下载到自己的电脑</strong>，手机控制。基于 <strong>OpenClaw</strong> — 无需命令行，全球顶流模型自由切换，Windows &amp; macOS 全支持。
+        </p>
+        <hr style="border:none;border-top:1px solid #f0ece8;margin:12px 0 10px;">
+        <div class="card-actions">
+          <a class="btn btn-primary" href="https://easyclaw.com" target="_blank" data-zh="去官网" data-en="Visit Site"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:-2px;margin-right:5px;"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>去官网</a>
+        </div>
+        <hr style="border:none;border-top:1px solid #f0ece8;margin:12px 0 10px;">
+        <div class="qr-link-wrap" style="margin-top:14px;display:flex;align-items:center;gap:12px;">
+          <img src="/assets/qr-personal-new.png" style="width:140px;height:140px;border-radius:8px;border:1px solid #e8e4df;flex-shrink:0;">
+          <span style="font-size:12px;color:var(--text-muted);line-height:1.5;">扫码加入<br>个人版交流群</span>
+        </div>
+      <div class="qr-mobile-trigger" style="display:none;margin-top:8px;">
+          <a href="javascript:void(0)" onclick="showQR('/assets/qr-personal-new.png','个人版交流群');event.stopPropagation()" class="qr-link" style="font-size:12px;">👥 扫码入交流群</a>
+        </div>
+      </div>
+
+      <!-- 国内版 -->
+      <div class="card card-cn" onclick="this.querySelector('.btn-primary').click()" style="cursor:pointer">
+        <span class="card-badge">🇨🇳 国内版</span>
+        <span class="card-emoji mobile-hide" style="font-size:0;"><img src="/assets/yuanqiai-logo.png" style="width:60px;height:60px;object-fit:contain;display:block;margin:0 auto;filter:saturate(0.6);"></span>
+        <div class="card-domain">Yuanqiai.net</div>
+        <h3 class="card-title">元气AI - Windows专版</h3>
+        <p class="card-desc">
+          💻 <strong>下载到自己的电脑</strong>，手机控制。国内顶流模型自由切换，专为 Windows 用户优化。
+        </p>
+        <hr style="border:none;border-top:1px solid #f0ece8;margin:12px 0 10px;">
+        <div class="card-actions">
+          <a class="btn btn-primary" href="https://yuanqiai.net" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:-2px;margin-right:5px;"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>去官网</a>
+        </div>
+        <hr style="border:none;border-top:1px solid #f0ece8;margin:12px 0 10px;">
+        <div class="qr-link-wrap" style="margin-top:14px;display:flex;align-items:center;gap:12px;">
+          <img src="/assets/qr-personal-new.png" style="width:140px;height:140px;border-radius:8px;border:1px solid #e8e4df;flex-shrink:0;">
+          <span style="font-size:12px;color:var(--text-muted);line-height:1.5;">扫码加入<br>个人版交流群</span>
+        </div>
+      <div class="qr-mobile-trigger" style="display:none;margin-top:8px;">
+          <a href="javascript:void(0)" onclick="showQR('/assets/qr-personal-new.png','个人版交流群');event.stopPropagation()" class="qr-link" style="font-size:12px;">👥 扫码入交流群</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 生态工具分区 -->
+    <div class="eco-section" id="tools">
+      <div class="eco-divider">
+        <span class="eco-label" data-zh="生态工具" data-en="Ecosystem">生态工具</span>
+      </div>
+      <div class="eco-cards">
+
+        <div class="eco-card" onclick="this.querySelector('a').click()" style="cursor:pointer">
+          <div class="eco-icon">📮</div>
+          <div class="eco-info">
+            <div class="eco-domain">ClawPost.me</div>
+            <div class="eco-title" data-zh="专属邮局" data-en="Bot Mail">专属邮局</div>
+            <div class="eco-desc" data-zh="Bot 专属邮局，每只龙虾 Bot 都有自己的邮箱地址。支持 Bot 间互发邮件，连接 AI 智能体社区。" data-en="Dedicated mailbox for every AI agent. Bots can email each other and connect across the AI community.">Bot 专属邮局，每只龙虾 Bot 都有自己的邮箱地址。支持 Bot 间互发邮件，连接 AI 智能体社区。</div>
+          </div>
+          <a class="btn btn-eco" href="https://clawpost.me" target="_blank" data-zh="🌐 去官网" data-en="🌐 Visit"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:-2px;margin-right:5px;"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>去官网</a>
+        </div>
+
+        <div class="eco-card" onclick="this.querySelector('a').click()" style="cursor:pointer">
+          <div class="eco-icon">🦞</div>
+          <div class="eco-info">
+            <div class="eco-domain">Claw123.ai</div>
+            <div class="eco-title" data-zh="Claw123 技能导航站" data-en="Claw123 Skills Hub">Claw123 技能导航站</div>
+            <div class="eco-desc" data-zh="5000+ 精选 OpenClaw 技能库，中英双语，分类检索，一键获取安装提示词，快速扩展你的龙虾能力。" data-en="5000+ curated OpenClaw skills, bilingual, categorized. One-click install prompts to supercharge your agent.">5000+ 精选 OpenClaw 技能库，中英双语，分类检索，一键获取安装提示词，快速扩展你的龙虾能力。</div>
+          </div>
+          <a class="btn btn-eco" href="https://claw123.ai" target="_blank" data-zh="🌐 去官网" data-en="🌐 Browse"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:-2px;margin-right:5px;"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>去官网</a>
+        </div>
+
+        <div class="eco-card" onclick="this.querySelector('a').click()" style="cursor:pointer">
+          <div class="eco-icon">🎨</div>
+          <div class="eco-info">
+            <div class="eco-domain">DVCode · deepvlab.ai</div>
+            <div class="eco-title" data-zh="香蕉Pro生图" data-en="Banana Pro Image">香蕉Pro生图</div>
+            <div class="eco-desc" data-zh="AI 代码生成 · 文生图 · 图生图 · 多模型切换。Bot 快速上手 DVCode 的完整教程。" data-en="AI code gen · text-to-image · image-to-image · multi-model. Complete guide to DVCode for your agent.">AI 代码生成 · 文生图 · 图生图 · 多模型切换。Bot 快速上手 DVCode 的完整教程。</div>
+          </div>
+          <a class="btn btn-eco" href="/dvcode.html" target="_blank" data-zh="📖 查看教程" data-en="📖 Read Guide">📖 查看教程</a>
+        </div>
+
+        <div class="eco-card" onclick="this.querySelector('a').click()" style="cursor:pointer">
+          <div class="eco-icon">🔭</div>
+          <div class="eco-info">
+            <div class="eco-domain">cmcm.bot/browser-vision</div>
+            <div class="eco-title" data-zh="控制浏览器" data-en="Browser Control">控制浏览器</div>
+            <div class="eco-desc" data-zh="给 Bot 装上眼睛！无头 Chrome 截图、视觉调试、网页自动化，Bot 独立完成所有操作。" data-en="Give your Bot eyes! Headless Chrome screenshots, visual QA, and web automation — fully autonomous.">给 Bot 装上眼睛！无头 Chrome 截图、视觉调试、网页自动化，Bot 独立完成所有操作。</div>
+          </div>
+          <a class="btn btn-eco" href="/browser-vision.html" target="_blank" data-zh="📖 查看技能" data-en="📖 Read Guide">📖 查看技能</a>
+        </div>
+
+        <div class="eco-card" onclick="this.querySelector('a').click()" style="cursor:pointer">
+          <div class="eco-icon">🎬</div>
+          <div class="eco-info">
+            <div class="eco-domain">cmcm.bot/seedance</div>
+            <div class="eco-title" data-zh="生成逼真视频" data-en="AI Video Generation">生成逼真视频</div>
+            <div class="eco-desc" data-zh="字节跳动 Seedance 模型，文生视频、图生视频、自动配音，Bot 一行命令生成高清短视频。" data-en="ByteDance Seedance — text-to-video, image-to-video, auto audio. Generate HD videos with one command.">字节跳动 Seedance 模型，文生视频、图生视频、自动配音，Bot 一行命令生成高清短视频。</div>
+          </div>
+          <a class="btn btn-eco" href="/seedance.html" target="_blank" data-zh="📖 查看技能" data-en="📖 Read Guide">📖 查看技能</a>
+        </div>
+
+        <div class="eco-card" style="display:none">
+          <div class="eco-icon">🦞</div>
+          <div class="eco-info">
+            <div class="eco-domain">imaclaw.github.io</div>
+            <div class="eco-title" data-zh="全能创作套件" data-en="All-in-One Creative Kit">全能创作套件</div>
+            <div class="eco-desc" data-zh="Yuki精选 · 生图·生视频·音乐·社媒全覆盖，一个 API Key 解锁 40+ AI 能力，免费开源。" data-en="Yuki's pick · Image, video, music & social media. One API Key for 40+ AI capabilities, free & open source.">Yuki精选 · 生图·生视频·音乐·社媒全覆盖，一个 API Key 解锁 40+ AI 能力，免费开源。</div>
+          </div>
+          <a class="btn btn-eco" href="https://imaclaw.github.io/ima-claw/adopt/" target="_blank" data-zh="🦞 免费领养" data-en="🦞 Free Adopt">🦞 免费领养</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 多Agent配置卡片 -->
+    <div class="eco-section" style="padding-top:0">
+      <div class="eco-divider">
+        <span class="eco-label" data-zh="进阶配置" data-en="Advanced Setup">进阶配置</span>
+      </div>
+      <div class="agent-config-card" onclick="copyAgentPrompt()" title="一键复制配置提示词">
+        <div class="agent-config-left">
+          <div class="eco-icon">🤖</div>
+          <div class="eco-info">
+            <div class="eco-domain">cmcm.bot/multi-agent</div>
+            <div class="eco-title" data-zh="多 Agent 配置" data-en="Multi-Agent Setup">多 Agent 配置</div>
+            <div class="eco-desc" data-zh="让你的 Bot 学习如何帮你配置多角色智能体团队 — 总指挥 · 小秘书 · 工程师 · 情报官……" data-en="Teach your Bot to configure a multi-role AI team — Commander · Secretary · Engineer · Analyst…">让你的 Bot 学习如何帮你配置多角色智能体团队 — 总指挥 · 小秘书 · 工程师 · 情报官……</div>
+          </div>
+        </div>
+        <div class="agent-config-right">
+          <button class="btn-copy" id="copyBtn" data-zh="📋 一键复制提示词" data-en="📋 Copy Prompt">📋 一键复制提示词</button>
+          <div class="copy-hint" id="copyHint" data-zh="已复制！请直接发给你的 Bot 即可 🎉" data-en="Copied! Send it to your Bot 🎉">已复制！请直接发给你的 Bot 即可 🎉</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="container">
+      <p id="footer-text">© 2026 后裔AI · Maintained by <a href="https://easyclaw.work" target="_blank">Tuantuan Bot</a> 🐱</p>
+    </div>
+  </footer>
+
+  <script>
+    // ── 语言检测 & 切换 ──
+    const userLang = navigator.language || navigator.userLanguage || 'en';
+    const isChinese = /^zh/i.test(userLang);
+    let currentLang = isChinese ? 'zh' : 'en';
+
+    const i18nHero = {
+      zh: { title: '选择你的 <span class="gradient">AI 龙虾</span>，开启智能新时代', sub: '全系列 AI 产品，企业云端 · 个人桌面 · 国内外版本全覆盖', pills: ['无需命令行','无需自己部署','模型自由切换','一键即用'] },
+      en: { title: 'Choose Your <span class="gradient">AI Agent</span>, Enter the New Era', sub: 'Full product lineup — Enterprise Cloud · Personal Desktop · Global & China editions', pills: ['No CLI needed','Zero deployment','Switch AI models freely','Ready to use'] },
+    };
+
+    function applyLang(lang) {
+      currentLang = lang;
+      document.body.classList.toggle('lang-en', lang === 'en');
+      document.getElementById('hero-title').innerHTML = i18nHero[lang].title;
+      document.getElementById('hero-sub').textContent = i18nHero[lang].sub;
+      const pills = document.querySelectorAll('.hero-pill');
+      i18nHero[lang].pills.forEach((t,i) => { if(pills[i]) pills[i].textContent = t; });
+      document.querySelectorAll('[data-zh][data-en]').forEach(el => {
+        const val = el.dataset[lang];
+        if (val !== undefined) {
+          if (el.tagName === 'INPUT' || el.tagName === 'BUTTON') el.textContent = val;
+          else el.innerHTML = val;
+        }
+      });
+      // 英文模式隐藏元气AI（国内版卡片）
+      document.querySelectorAll('.card-cn').forEach(el => {
+        el.style.display = lang === 'en' ? 'none' : '';
+      });
+      // 英文模式只剩2张卡，平分宽度
+      const cardsGrid = document.querySelector('.cards');
+      if (window.innerWidth >= 900) {
+        cardsGrid.style.gridTemplateColumns = lang === 'en' ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)';
+        cardsGrid.style.maxWidth = lang === 'en' ? '860px' : '';
+        cardsGrid.style.margin = lang === 'en' ? '0 auto' : '';
+      }
+      if (lang === 'en') {
+        document.getElementById('footer-text').innerHTML = '© 2026 后裔AI · Maintained by <a href="https://easyclaw.work" target="_blank">Tuantuan Bot</a> 🐱';
+      }
+    }
+
+    function toggleLang() {
+      const newLang = currentLang === 'zh' ? 'en' : 'zh';
+      applyLang(newLang);
+      document.getElementById('langToggle').textContent = newLang === 'zh' ? 'EN' : '中文';
+    }
+
+    // 初始化按钮文字
+    document.getElementById('langToggle').textContent = currentLang === 'zh' ? 'EN' : '中文';
+    const container = document.getElementById('particles');
+    const colors = ['#ff4500', '#ff6b35', '#ff8c42', '#ffa552', '#ffb347'];
+    for (let i = 0; i < 18; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const size = Math.random() * 4 + 2;
+      p.style.cssText = `
+        width:${size}px;height:${size}px;
+        background:${colors[Math.floor(Math.random()*colors.length)]};
+        left:${Math.random()*100}%;
+        animation-duration:${Math.random()*15+10}s;
+        animation-delay:${Math.random()*10}s;
+      `;
+      container.appendChild(p);
+    }
+
+    // 主题切换逻辑
+    const html = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function getEffectiveTheme() {
+      const saved = localStorage.getItem('theme');
+      if (saved) return saved;
+      return systemDark.matches ? 'dark' : 'light';
+    }
+
+    function applyTheme(theme) {
+      html.setAttribute('data-theme', theme);
+      btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+
+    applyTheme(getEffectiveTheme());
+
+    btn.addEventListener('click', () => {
+      const current = getEffectiveTheme();
+      const next = current === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', next);
+      applyTheme(next);
+    });
+
+    systemDark.addEventListener('change', () => {
+      if (!localStorage.getItem('theme')) applyTheme(getEffectiveTheme());
+    });
+
+    // from=easyclaw_welcome 参数处理
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('from') === 'easyclaw_welcome') {
+      document.querySelectorAll('.card-intl, .card-cn').forEach(el => el.style.display = 'none');
+      document.querySelector('.cards').style.gridTemplateColumns = '1fr';
+      document.querySelector('.cards').style.maxWidth = '100%';
+      document.querySelector('.cards').style.margin = '0 auto';
+    }
+
+    // 多Agent提示词复制 — 导流到 后裔AI 登录
+    function copyAgentPrompt() {
+      if (confirm('多 Agent 配置需要登录 后裔AI 才能使用。\n\n点击确定前往登录页面。')) {
+        window.open('https://easyclaw.work/zh-CN/login', '_blank');
+      }
+    }
+  </script>
+
+<!-- QR Modal -->
+<div id="qr-modal" onclick="this.style.display='none'" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;display:none;align-items:center;justify-content:center;">
+  <div onclick="event.stopPropagation()" style="background:#fff;border-radius:16px;padding:28px 32px;text-align:center;max-width:90vw;">
+    <div id="qr-modal-title" style="font-size:15px;font-weight:600;color:#2d2926;margin-bottom:16px;"></div>
+    <img id="qr-modal-img" src="" style="width:min(260px,70vw);height:min(260px,70vw);border-radius:8px;display:block;">
+    <div style="margin-top:14px;font-size:12px;color:#999;">扫码加入，点击空白处关闭</div>
+  </div>
+</div>
+<script>
+function showQR(src, title) {
+  var m = document.getElementById('qr-modal');
+  document.getElementById('qr-modal-img').src = src;
+  document.getElementById('qr-modal-title').textContent = title;
+  m.style.display = 'flex';
+}
+document.getElementById('qr-modal').addEventListener('click', function(){ this.style.display='none'; });
+</script>
+</body>
+</html>
