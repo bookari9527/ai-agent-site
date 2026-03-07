@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>后羿AI - 智能进化解决方案</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect"fonts.gstatic.com href="https://" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -169,7 +169,7 @@
     .card:hover::before { opacity: 1; }
     .card-badge {
       display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(255, 69, 0, 0.12); border: 1px solid rgba69, 0(255, , 0.25);
+      background: rgba(255, 69, 0, 0.12); border: 1px solid rgba(255, 69, 0, 0.25);
       color: var(--lobster-3); font-size: 11px; font-weight: 600;
       letter-spacing: 0.8px; text-transform: uppercase;
       padding: 5px 12px; border-radius: 20px; margin-bottom: 12px; width: fit-content;
@@ -191,6 +191,19 @@
     .btn-primary:hover { background: var(--lobster-2); transform: translateY(-1px); }
     .btn-secondary { background: rgba(255, 100, 50, 0.1); border: 1px solid rgba(255, 100, 50, 0.4); color: var(--lobster-3); }
     .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,100,50,0.4); }
+    
+    /* 抖音群 */
+    .douyin-section { 
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+      padding: 30px; margin-bottom: 24px; text-align: center;
+    }
+    .douyin-title { font-size: 20px; margin-bottom: 16px; }
+    .douyin-qr { 
+      width: 180px; height: 180px; border-radius: 12px; 
+      border: 2px solid var(--border); margin-bottom: 16px;
+    }
+    .douyin-desc { color: var(--text-muted); font-size: 14px; margin-bottom: 16px; }
+    
     footer { z-index: 1; text-align: center; padding: 30px 0 40px; border-top: 1px solid rgba(255,255,255,0.05); }
     footer p { color: var(--text-muted); font-size: 13px; }
     footer a { color: var(--lobster-3); text-decoration: none; }
@@ -223,6 +236,15 @@
       </div>
       <div class="divider"></div>
     </header>
+    
+    <!-- 抖音群 -->
+    <div class="douyin-section">
+      <h3 class="douyin-title">📱 加入抖音群</h3>
+      <img src="douyin-qr.jpg" alt="抖音群二维码" class="douyin-qr">
+      <p class="douyin-desc">扫码加入后羿AI抖音群，了解更多</p>
+      <a class="btn btn-primary" href="pricing.html">查看价格</a>
+    </div>
+    
     <div class="cards">
       <div class="card">
         <span class="card-badge" data-zh="🏹 核心服务" data-en="🏹 Core Service">🏹 核心服务</span>
