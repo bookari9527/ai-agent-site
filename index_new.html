@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EasyClaw — AI 产品导航</title>
+  <title>后羿AI 鈥?AI 浜у搧瀵艰埅</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -30,7 +30,7 @@
       --text-muted: #9a9590;
     }
 
-    /* 浅色模式变量 */
+    /* 娴呰壊妯″紡鍙橀噺 */
     [data-theme="light"] {
       --bg-dark: #f5f3ef;
       --bg-card: #ffffff;
@@ -53,7 +53,7 @@
       }
     }
 
-    /* 主题切换按钮 */
+    /* 涓婚鍒囨崲鎸夐挳 */
     .lang-toggle {
       position: fixed;
       top: 16px;
@@ -396,7 +396,7 @@
       color: var(--lobster-3);
     }
 
-    /* 生态工具分区 */
+    /* 鐢熸€佸伐鍏峰垎鍖?*/
     .eco-section { padding-bottom: 28px; }
 
     .eco-divider {
@@ -496,7 +496,7 @@
       border-color: var(--border-hover);
     }
 
-    /* 多Agent配置卡片 */
+    /* 澶欰gent閰嶇疆鍗＄墖 */
     .agent-config-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -614,7 +614,7 @@
 
     
     
-    /* 手机端三个版本紧凑布局 */
+    /* 鎵嬫満绔笁涓増鏈揣鍑戝竷灞€ */
     @media (max-width: 600px) { .mobile-hide { display: none !important; } }
     @media (max-width: 600px) {
       .cards { grid-template-columns: 1fr !important; gap: 8px !important; }
@@ -636,8 +636,8 @@
       .card .card-actions { flex-wrap: wrap; gap: 5px !important; margin-top: 0 !important; }
       .card .card-actions .btn { flex: 1; min-width: 70px; font-size: 11px !important; padding: 6px 6px !important; text-align: center; justify-content: center !important; }
       
-      /* 手机端进一步压缩 */
-      /* 手机端 hero 标题压缩 */
+      /* 鎵嬫満绔繘涓€姝ュ帇缂?*/
+      /* 鎵嬫満绔?hero 鏍囬鍘嬬缉 */
       .hero { padding: 16px 16px 12px !important; }
       .hero-logo { height: 28px !important; margin-bottom: 8px !important; }
       .hero-title { font-size: 18px !important; line-height: 1.3 !important; margin-bottom: 6px !important; }
@@ -646,9 +646,9 @@
       .card .card-tags { display: none !important; }
       .card .card-desc { -webkit-line-clamp: 3 !important; }
       .card hr:not(:last-of-type) { display: none !important; }
-      /* 手机端二维码改为弹出方式 */
+      /* 鎵嬫満绔簩缁寸爜鏀逛负寮瑰嚭鏂瑰紡 */
       .qr-link-wrap { display: none !important; }
-      /* 改用文字触发 */
+      /* 鏀圭敤鏂囧瓧瑙﹀彂 */
       .qr-mobile-trigger { display: flex !important; }
 
     }
@@ -660,192 +660,189 @@
 <body>
 
   <div id="particles"></div>
-  <button class="theme-toggle" id="themeToggle" title="切换主题">🌙</button>
+  <button class="theme-toggle" id="themeToggle" title="鍒囨崲涓婚">馃寵</button>
   <button class="lang-toggle" id="langToggle" onclick="toggleLang()">EN</button>
 
   <div class="container">
     <header>
       <div class="logo-area">
-        <img src="https://easyclaw.work/logo.svg" alt="EasyClaw" style="height:40px;width:auto;">
+        <img src="https://后羿AI.work/logo.svg" alt="后羿AI" style="height:40px;width:auto;">
         <div class="logo-text">
-          <h1>EasyClaw</h1>
+          <h1>后羿AI</h1>
           <p>Built on OpenClaw</p>
         </div>
       </div>
       <h2 class="hero-title" id="hero-title">
-        选择你的 <span class="gradient">AI 龙虾</span>，开启智能新时代
+        閫夋嫨浣犵殑 <span class="gradient">AI 榫欒櫨</span>锛屽紑鍚櫤鑳芥柊鏃朵唬
       </h2>
-      <p class="hero-sub" id="hero-sub">全系列 AI 产品，企业云端 · 个人桌面 · 国内外版本全覆盖</p>
+      <p class="hero-sub" id="hero-sub">鍏ㄧ郴鍒?AI 浜у搧锛屼紒涓氫簯绔?路 涓汉妗岄潰 路 鍥藉唴澶栫増鏈叏瑕嗙洊</p>
       <div class="hero-features">
-        <span class="hero-pill">无需命令行</span>
-        <span class="hero-pill">无需自己部署</span>
-        <span class="hero-pill">模型自由切换</span>
-        <span class="hero-pill">一键即用</span>
+        <span class="hero-pill">鏃犻渶鍛戒护琛?/span>
+        <span class="hero-pill">鏃犻渶鑷繁閮ㄧ讲</span>
+        <span class="hero-pill">妯″瀷鑷敱鍒囨崲</span>
+        <span class="hero-pill">涓€閿嵆鐢?/span>
       </div>
       <div class="divider"></div>
     </header>
 
     <div class="cards">
 
-      <!-- 企业版 -->
+      <!-- 浼佷笟鐗?-->
       <div class="card" onclick="this.querySelector('.btn-primary').click()" style="cursor:pointer">
-        <span class="card-badge" data-zh="☁️ 云端版" data-en="🏢 Enterprise">☁️ 云端版</span>
-        <span class="card-emoji mobile-hide" style="font-size:0;"><img src="/assets/easyclaw-logo.svg" style="width:60px;height:60px;object-fit:contain;display:block;margin:0 auto;"></span>
-        <div class="card-domain">EasyClaw.work</div>
-        <h3 class="card-title" data-zh="EasyClaw 云端版" data-en="EasyClaw Cloud<br><small style='font-size:14px;font-weight:500;color:var(--text-muted)'>Cloud Edition</small>">EasyClaw 云端版</h3>
-        <p class="card-desc" data-zh="☁️ <strong>无需个人电脑</strong>，龙虾跑在云端，手机控制。基于 <strong>OpenClaw</strong> — 无需命令行，全球顶流模型自由切换，按量计费。" data-en="<strong>No download needed</strong> — your AI agent runs on its own cloud server.<br>Integrates with <strong>Lark, WeCom, Telegram</strong> and more. Switch between top global models freely. <strong>Pay as you go</strong> with credits.">
-          ☁️ <strong>无需个人电脑</strong>，龙虾跑在云端，手机控制。基于 <strong>OpenClaw</strong> — 无需命令行，全球顶流模型自由切换，按量计费。
-        </p>
+        <span class="card-badge" data-zh="鈽侊笍 浜戠鐗? data-en="馃彚 Enterprise">鈽侊笍 浜戠鐗?/span>
+        <span class="card-emoji mobile-hide" style="font-size:0;"><img src="/assets/后羿AI-logo.svg" style="width:60px;height:60px;object-fit:contain;display:block;margin:0 auto;"></span>
+        <div class="card-domain">后羿AI.work</div>
+        <h3 class="card-title" data-zh="后羿AI 浜戠鐗? data-en="后羿AI Cloud<br><small style='font-size:14px;font-weight:500;color:var(--text-muted)'>Cloud Edition</small>">后羿AI 浜戠鐗?/h3>
+        <p class="card-desc" data-zh="鈽侊笍 <strong>鏃犻渶涓汉鐢佃剳</strong>锛岄緳铏捐窇鍦ㄤ簯绔紝鎵嬫満鎺у埗銆傚熀浜?<strong>OpenClaw</strong> 鈥?鏃犻渶鍛戒护琛岋紝鍏ㄧ悆椤舵祦妯″瀷鑷敱鍒囨崲锛屾寜閲忚璐广€? data-en="<strong>No download needed</strong> 鈥?your AI Assistant runs on its own cloud server.<br>Integrates with <strong>Lark, WeCom, Telegram</strong> and more. Switch between top global models freely. <strong>Pay as you go</strong> with credits.">
+          鈽侊笍 <strong>鏃犻渶涓汉鐢佃剳</strong>锛岄緳铏捐窇鍦ㄤ簯绔紝鎵嬫満鎺у埗銆傚熀浜?<strong>OpenClaw</strong> 鈥?鏃犻渶鍛戒护琛岋紝鍏ㄧ悆椤舵祦妯″瀷鑷敱鍒囨崲锛屾寜閲忚璐广€?        </p>
         <hr style="border:none;border-top:1px solid #f0ece8;margin:12px 0 10px;">
         <div class="card-actions" style="gap:8px;">
-          <a class="btn btn-primary" href="https://easyclaw.work" style="flex:7;justify-content:center;" target="_blank" data-zh="自助体验" data-en="Get Started"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:-2px;margin-right:5px;"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>自助体验</a>
-          <a class="btn btn-secondary" href="https://cheetah-mobile.feishu.cn/share/base/form/shrcnjff5qZkoyl3mE9wGJDqqlP" style="flex:3;justify-content:center;" target="_blank" onclick="event.stopPropagation()" data-zh="企业采购" data-en="Enterprise"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:-2px;margin-right:5px;"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>企业采购</a>
+          <a class="btn btn-primary" href="https://后羿AI.work" style="flex:7;justify-content:center;" target="_blank" data-zh="鑷姪浣撻獙" data-en="Get Started"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:-2px;margin-right:5px;"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>鑷姪浣撻獙</a>
+          <a class="btn btn-secondary" href="https://cheetah-mobile.feishu.cn/share/base/form/shrcnjff5qZkoyl3mE9wGJDqqlP" style="flex:3;justify-content:center;" target="_blank" onclick="event.stopPropagation()" data-zh="浼佷笟閲囪喘" data-en="Enterprise"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:-2px;margin-right:5px;"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>浼佷笟閲囪喘</a>
         </div>
         <hr style="border:none;border-top:1px solid #f0ece8;margin:12px 0 10px;">
         <div class="qr-link-wrap" style="margin-top:14px;display:flex;align-items:center;gap:12px;">
-          <img src="/assets/qr-enterprise.png" style="width:140px;height:140px;border-radius:8px;border:1px solid #e8e4df;flex-shrink:0;">
-          <span style="font-size:12px;color:var(--text-muted);line-height:1.5;">扫码加入<br>企业版交流群</span>
+          <img src="douyin-qr.jpg" style="width:140px;height:140px;border-radius:8px;border:1px solid #e8e4df;flex-shrink:0;">
+          <span style="font-size:12px;color:var(--text-muted);line-height:1.5;">鎵爜鍔犲叆<br>浼佷笟鐗堜氦娴佺兢</span>
         </div>
       <div class="qr-mobile-trigger" style="display:none;margin-top:8px;">
-          <a href="javascript:void(0)" onclick="showQR('/assets/qr-enterprise.png','云端版交流群');event.stopPropagation()" class="qr-link" style="font-size:12px;">👥 扫码入交流群</a>
+          <a href="javascript:void(0)" onclick="showQR('douyin-qr.jpg','浜戠鐗堜氦娴佺兢');event.stopPropagation()" class="qr-link" style="font-size:12px;">馃懃 鎵爜鍏ヤ氦娴佺兢</a>
         </div>
       </div>
 
-      <!-- 国际桌面版 -->
+      <!-- 鍥介檯妗岄潰鐗?-->
       <div class="card card-intl" onclick="this.querySelector('.btn-primary').click()" style="cursor:pointer">
-        <span class="card-badge" data-zh="🌍 国际版" data-en="🌍 International">🌍 国际版</span>
-        <span class="card-emoji mobile-hide" style="font-size:0;"><img src="/assets/easyclaw-desktop-logo.png" style="width:60px;height:60px;object-fit:contain;display:block;margin:0 auto;filter:saturate(0.6);"></span>
-        <div class="card-domain">EasyClaw.com</div>
-        <h3 class="card-title" data-zh="EasyClaw 桌面版" data-en="EasyClaw Desktop<br><small style='font-size:14px;font-weight:500;color:var(--text-muted)'>International</small>">EasyClaw 桌面版</h3>
-        <p class="card-desc" data-zh="💻 <strong>下载到自己的电脑</strong>，手机控制。基于 <strong>OpenClaw</strong> — 无需命令行，全球顶流模型自由切换，Windows &amp; macOS 全支持。" data-en="<strong>Windows &amp; macOS</strong> desktop app for international users. Built on the <strong>OpenClaw framework</strong>. Switch between top global AI models with one click.">
-          💻 <strong>下载到自己的电脑</strong>，手机控制。基于 <strong>OpenClaw</strong> — 无需命令行，全球顶流模型自由切换，Windows &amp; macOS 全支持。
-        </p>
+        <span class="card-badge" data-zh="馃實 鍥介檯鐗? data-en="馃實 International">馃實 鍥介檯鐗?/span>
+        <span class="card-emoji mobile-hide" style="font-size:0;"><img src="/assets/后羿AI-desktop-logo.png" style="width:60px;height:60px;object-fit:contain;display:block;margin:0 auto;filter:saturate(0.6);"></span>
+        <div class="card-domain">后羿AI.com</div>
+        <h3 class="card-title" data-zh="后羿AI 妗岄潰鐗? data-en="后羿AI Desktop<br><small style='font-size:14px;font-weight:500;color:var(--text-muted)'>International</small>">后羿AI 妗岄潰鐗?/h3>
+        <p class="card-desc" data-zh="馃捇 <strong>涓嬭浇鍒拌嚜宸辩殑鐢佃剳</strong>锛屾墜鏈烘帶鍒躲€傚熀浜?<strong>OpenClaw</strong> 鈥?鏃犻渶鍛戒护琛岋紝鍏ㄧ悆椤舵祦妯″瀷鑷敱鍒囨崲锛學indows &amp; macOS 鍏ㄦ敮鎸併€? data-en="<strong>Windows &amp; macOS</strong> desktop app for international users. Built on the <strong>OpenClaw framework</strong>. Switch between top global AI models with one click.">
+          馃捇 <strong>涓嬭浇鍒拌嚜宸辩殑鐢佃剳</strong>锛屾墜鏈烘帶鍒躲€傚熀浜?<strong>OpenClaw</strong> 鈥?鏃犻渶鍛戒护琛岋紝鍏ㄧ悆椤舵祦妯″瀷鑷敱鍒囨崲锛學indows &amp; macOS 鍏ㄦ敮鎸併€?        </p>
         <hr style="border:none;border-top:1px solid #f0ece8;margin:12px 0 10px;">
         <div class="card-actions">
-          <a class="btn btn-primary" href="https://easyclaw.com" target="_blank" data-zh="去官网" data-en="Visit Site"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:-2px;margin-right:5px;"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>去官网</a>
+          <a class="btn btn-primary" href="https://后羿AI.com" target="_blank" data-zh="鍘诲畼缃? data-en="Visit Site"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:-2px;margin-right:5px;"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>鍘诲畼缃?/a>
         </div>
         <hr style="border:none;border-top:1px solid #f0ece8;margin:12px 0 10px;">
         <div class="qr-link-wrap" style="margin-top:14px;display:flex;align-items:center;gap:12px;">
-          <img src="/assets/qr-personal-new.png" style="width:140px;height:140px;border-radius:8px;border:1px solid #e8e4df;flex-shrink:0;">
-          <span style="font-size:12px;color:var(--text-muted);line-height:1.5;">扫码加入<br>个人版交流群</span>
+          <img src="tiktok-qr.jpg" style="width:140px;height:140px;border-radius:8px;border:1px solid #e8e4df;flex-shrink:0;">
+          <span style="font-size:12px;color:var(--text-muted);line-height:1.5;">鎵爜鍔犲叆<br>涓汉鐗堜氦娴佺兢</span>
         </div>
       <div class="qr-mobile-trigger" style="display:none;margin-top:8px;">
-          <a href="javascript:void(0)" onclick="showQR('/assets/qr-personal-new.png','个人版交流群');event.stopPropagation()" class="qr-link" style="font-size:12px;">👥 扫码入交流群</a>
+          <a href="javascript:void(0)" onclick="showQR('tiktok-qr.jpg','涓汉鐗堜氦娴佺兢');event.stopPropagation()" class="qr-link" style="font-size:12px;">馃懃 鎵爜鍏ヤ氦娴佺兢</a>
         </div>
       </div>
 
-      <!-- 国内版 -->
+      <!-- 鍥藉唴鐗?-->
       <div class="card card-cn" onclick="this.querySelector('.btn-primary').click()" style="cursor:pointer">
-        <span class="card-badge">🇨🇳 国内版</span>
+        <span class="card-badge">馃嚚馃嚦 鍥藉唴鐗?/span>
         <span class="card-emoji mobile-hide" style="font-size:0;"><img src="/assets/yuanqiai-logo.png" style="width:60px;height:60px;object-fit:contain;display:block;margin:0 auto;filter:saturate(0.6);"></span>
-        <div class="card-domain">Yuanqiai.net</div>
-        <h3 class="card-title">元气AI - Windows专版</h3>
+        <div class="card-domain">houyi.ai</div>
+        <h3 class="card-title">鍏冩皵AI - Windows涓撶増</h3>
         <p class="card-desc">
-          💻 <strong>下载到自己的电脑</strong>，手机控制。国内顶流模型自由切换，专为 Windows 用户优化。
-        </p>
+          馃捇 <strong>涓嬭浇鍒拌嚜宸辩殑鐢佃剳</strong>锛屾墜鏈烘帶鍒躲€傚浗鍐呴《娴佹ā鍨嬭嚜鐢卞垏鎹紝涓撲负 Windows 鐢ㄦ埛浼樺寲銆?        </p>
         <hr style="border:none;border-top:1px solid #f0ece8;margin:12px 0 10px;">
         <div class="card-actions">
-          <a class="btn btn-primary" href="https://yuanqiai.net" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:-2px;margin-right:5px;"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>去官网</a>
+          <a class="btn btn-primary" href="#" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:-2px;margin-right:5px;"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>鍘诲畼缃?/a>
         </div>
         <hr style="border:none;border-top:1px solid #f0ece8;margin:12px 0 10px;">
         <div class="qr-link-wrap" style="margin-top:14px;display:flex;align-items:center;gap:12px;">
-          <img src="/assets/qr-personal-new.png" style="width:140px;height:140px;border-radius:8px;border:1px solid #e8e4df;flex-shrink:0;">
-          <span style="font-size:12px;color:var(--text-muted);line-height:1.5;">扫码加入<br>个人版交流群</span>
+          <img src="tiktok-qr.jpg" style="width:140px;height:140px;border-radius:8px;border:1px solid #e8e4df;flex-shrink:0;">
+          <span style="font-size:12px;color:var(--text-muted);line-height:1.5;">鎵爜鍔犲叆<br>涓汉鐗堜氦娴佺兢</span>
         </div>
       <div class="qr-mobile-trigger" style="display:none;margin-top:8px;">
-          <a href="javascript:void(0)" onclick="showQR('/assets/qr-personal-new.png','个人版交流群');event.stopPropagation()" class="qr-link" style="font-size:12px;">👥 扫码入交流群</a>
+          <a href="javascript:void(0)" onclick="showQR('tiktok-qr.jpg','涓汉鐗堜氦娴佺兢');event.stopPropagation()" class="qr-link" style="font-size:12px;">馃懃 鎵爜鍏ヤ氦娴佺兢</a>
         </div>
       </div>
 
     </div>
 
-    <!-- 生态工具分区 -->
+    <!-- 鐢熸€佸伐鍏峰垎鍖?-->
     <div class="eco-section" id="tools">
       <div class="eco-divider">
-        <span class="eco-label" data-zh="生态工具" data-en="Ecosystem">生态工具</span>
+        <span class="eco-label" data-zh="鐢熸€佸伐鍏? data-en="Ecosystem">鐢熸€佸伐鍏?/span>
       </div>
       <div class="eco-cards">
 
         <div class="eco-card" onclick="this.querySelector('a').click()" style="cursor:pointer">
-          <div class="eco-icon">📮</div>
+          <div class="eco-icon">馃摦</div>
           <div class="eco-info">
             <div class="eco-domain">ClawPost.me</div>
-            <div class="eco-title" data-zh="专属邮局" data-en="Bot Mail">专属邮局</div>
-            <div class="eco-desc" data-zh="Bot 专属邮局，每只龙虾 Bot 都有自己的邮箱地址。支持 Bot 间互发邮件，连接 AI 智能体社区。" data-en="Dedicated mailbox for every AI agent. Bots can email each other and connect across the AI community.">Bot 专属邮局，每只龙虾 Bot 都有自己的邮箱地址。支持 Bot 间互发邮件，连接 AI 智能体社区。</div>
+            <div class="eco-title" data-zh="涓撳睘閭眬" data-en="Bot Mail">涓撳睘閭眬</div>
+            <div class="eco-desc" data-zh="Bot 涓撳睘閭眬锛屾瘡鍙緳铏?Bot 閮芥湁鑷繁鐨勯偖绠卞湴鍧€銆傛敮鎸?Bot 闂翠簰鍙戦偖浠讹紝杩炴帴 AI 鏅鸿兘浣撶ぞ鍖恒€? data-en="Dedicated mailbox for every AI Assistant. Bots can email each other and connect across the AI community.">Bot 涓撳睘閭眬锛屾瘡鍙緳铏?Bot 閮芥湁鑷繁鐨勯偖绠卞湴鍧€銆傛敮鎸?Bot 闂翠簰鍙戦偖浠讹紝杩炴帴 AI 鏅鸿兘浣撶ぞ鍖恒€?/div>
           </div>
-          <a class="btn btn-eco" href="https://clawpost.me" target="_blank" data-zh="🌐 去官网" data-en="🌐 Visit"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:-2px;margin-right:5px;"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>去官网</a>
+          <a class="btn btn-eco" href="https://clawpost.me" target="_blank" data-zh="馃寪 鍘诲畼缃? data-en="馃寪 Visit"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:-2px;margin-right:5px;"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>鍘诲畼缃?/a>
         </div>
 
         <div class="eco-card" onclick="this.querySelector('a').click()" style="cursor:pointer">
-          <div class="eco-icon">🦞</div>
+          <div class="eco-icon">馃</div>
           <div class="eco-info">
             <div class="eco-domain">Claw123.ai</div>
-            <div class="eco-title" data-zh="Claw123 技能导航站" data-en="Claw123 Skills Hub">Claw123 技能导航站</div>
-            <div class="eco-desc" data-zh="5000+ 精选 OpenClaw 技能库，中英双语，分类检索，一键获取安装提示词，快速扩展你的龙虾能力。" data-en="5000+ curated OpenClaw skills, bilingual, categorized. One-click install prompts to supercharge your agent.">5000+ 精选 OpenClaw 技能库，中英双语，分类检索，一键获取安装提示词，快速扩展你的龙虾能力。</div>
+            <div class="eco-title" data-zh="Claw123 鎶€鑳藉鑸珯" data-en="Claw123 Skills Hub">Claw123 鎶€鑳藉鑸珯</div>
+            <div class="eco-desc" data-zh="5000+ 绮鹃€?OpenClaw 鎶€鑳藉簱锛屼腑鑻卞弻璇紝鍒嗙被妫€绱紝涓€閿幏鍙栧畨瑁呮彁绀鸿瘝锛屽揩閫熸墿灞曚綘鐨勯緳铏捐兘鍔涖€? data-en="5000+ curated OpenClaw skills, bilingual, categorized. One-click install prompts to supercharge your agent.">5000+ 绮鹃€?OpenClaw 鎶€鑳藉簱锛屼腑鑻卞弻璇紝鍒嗙被妫€绱紝涓€閿幏鍙栧畨瑁呮彁绀鸿瘝锛屽揩閫熸墿灞曚綘鐨勯緳铏捐兘鍔涖€?/div>
           </div>
-          <a class="btn btn-eco" href="https://claw123.ai" target="_blank" data-zh="🌐 去官网" data-en="🌐 Browse"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:-2px;margin-right:5px;"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>去官网</a>
+          <a class="btn btn-eco" href="https://claw123.ai" target="_blank" data-zh="馃寪 鍘诲畼缃? data-en="馃寪 Browse"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:-2px;margin-right:5px;"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>鍘诲畼缃?/a>
         </div>
 
         <div class="eco-card" onclick="this.querySelector('a').click()" style="cursor:pointer">
-          <div class="eco-icon">🎨</div>
+          <div class="eco-icon">馃帹</div>
           <div class="eco-info">
-            <div class="eco-domain">DVCode · deepvlab.ai</div>
-            <div class="eco-title" data-zh="香蕉Pro生图" data-en="Banana Pro Image">香蕉Pro生图</div>
-            <div class="eco-desc" data-zh="AI 代码生成 · 文生图 · 图生图 · 多模型切换。Bot 快速上手 DVCode 的完整教程。" data-en="AI code gen · text-to-image · image-to-image · multi-model. Complete guide to DVCode for your agent.">AI 代码生成 · 文生图 · 图生图 · 多模型切换。Bot 快速上手 DVCode 的完整教程。</div>
+            <div class="eco-domain">DVCode 路 deepvlab.ai</div>
+            <div class="eco-title" data-zh="棣欒晧Pro鐢熷浘" data-en="Banana Pro Image">棣欒晧Pro鐢熷浘</div>
+            <div class="eco-desc" data-zh="AI 浠ｇ爜鐢熸垚 路 鏂囩敓鍥?路 鍥剧敓鍥?路 澶氭ā鍨嬪垏鎹€侭ot 蹇€熶笂鎵?DVCode 鐨勫畬鏁存暀绋嬨€? data-en="AI code gen 路 text-to-image 路 image-to-image 路 multi-model. Complete guide to DVCode for your agent.">AI 浠ｇ爜鐢熸垚 路 鏂囩敓鍥?路 鍥剧敓鍥?路 澶氭ā鍨嬪垏鎹€侭ot 蹇€熶笂鎵?DVCode 鐨勫畬鏁存暀绋嬨€?/div>
           </div>
-          <a class="btn btn-eco" href="/dvcode.html" target="_blank" data-zh="📖 查看教程" data-en="📖 Read Guide">📖 查看教程</a>
+          <a class="btn btn-eco" href="/dvcode.html" target="_blank" data-zh="馃摉 鏌ョ湅鏁欑▼" data-en="馃摉 Read Guide">馃摉 鏌ョ湅鏁欑▼</a>
         </div>
 
         <div class="eco-card" onclick="this.querySelector('a').click()" style="cursor:pointer">
-          <div class="eco-icon">🔭</div>
+          <div class="eco-icon">馃敪</div>
           <div class="eco-info">
             <div class="eco-domain">cmcm.bot/browser-vision</div>
-            <div class="eco-title" data-zh="控制浏览器" data-en="Browser Control">控制浏览器</div>
-            <div class="eco-desc" data-zh="给 Bot 装上眼睛！无头 Chrome 截图、视觉调试、网页自动化，Bot 独立完成所有操作。" data-en="Give your Bot eyes! Headless Chrome screenshots, visual QA, and web automation — fully autonomous.">给 Bot 装上眼睛！无头 Chrome 截图、视觉调试、网页自动化，Bot 独立完成所有操作。</div>
+            <div class="eco-title" data-zh="鎺у埗娴忚鍣? data-en="Browser Control">鎺у埗娴忚鍣?/div>
+            <div class="eco-desc" data-zh="缁?Bot 瑁呬笂鐪肩潧锛佹棤澶?Chrome 鎴浘銆佽瑙夎皟璇曘€佺綉椤佃嚜鍔ㄥ寲锛孊ot 鐙珛瀹屾垚鎵€鏈夋搷浣溿€? data-en="Give your Bot eyes! Headless Chrome screenshots, visual QA, and web automation 鈥?fully autonomous.">缁?Bot 瑁呬笂鐪肩潧锛佹棤澶?Chrome 鎴浘銆佽瑙夎皟璇曘€佺綉椤佃嚜鍔ㄥ寲锛孊ot 鐙珛瀹屾垚鎵€鏈夋搷浣溿€?/div>
           </div>
-          <a class="btn btn-eco" href="/browser-vision.html" target="_blank" data-zh="📖 查看技能" data-en="📖 Read Guide">📖 查看技能</a>
+          <a class="btn btn-eco" href="/browser-vision.html" target="_blank" data-zh="馃摉 鏌ョ湅鎶€鑳? data-en="馃摉 Read Guide">馃摉 鏌ョ湅鎶€鑳?/a>
         </div>
 
         <div class="eco-card" onclick="this.querySelector('a').click()" style="cursor:pointer">
-          <div class="eco-icon">🎬</div>
+          <div class="eco-icon">馃幀</div>
           <div class="eco-info">
             <div class="eco-domain">cmcm.bot/seedance</div>
-            <div class="eco-title" data-zh="生成逼真视频" data-en="AI Video Generation">生成逼真视频</div>
-            <div class="eco-desc" data-zh="字节跳动 Seedance 模型，文生视频、图生视频、自动配音，Bot 一行命令生成高清短视频。" data-en="ByteDance Seedance — text-to-video, image-to-video, auto audio. Generate HD videos with one command.">字节跳动 Seedance 模型，文生视频、图生视频、自动配音，Bot 一行命令生成高清短视频。</div>
+            <div class="eco-title" data-zh="鐢熸垚閫肩湡瑙嗛" data-en="AI Video Generation">鐢熸垚閫肩湡瑙嗛</div>
+            <div class="eco-desc" data-zh="瀛楄妭璺冲姩 Seedance 妯″瀷锛屾枃鐢熻棰戙€佸浘鐢熻棰戙€佽嚜鍔ㄩ厤闊筹紝Bot 涓€琛屽懡浠ょ敓鎴愰珮娓呯煭瑙嗛銆? data-en="ByteDance Seedance 鈥?text-to-video, image-to-video, auto audio. Generate HD videos with one command.">瀛楄妭璺冲姩 Seedance 妯″瀷锛屾枃鐢熻棰戙€佸浘鐢熻棰戙€佽嚜鍔ㄩ厤闊筹紝Bot 涓€琛屽懡浠ょ敓鎴愰珮娓呯煭瑙嗛銆?/div>
           </div>
-          <a class="btn btn-eco" href="/seedance.html" target="_blank" data-zh="📖 查看技能" data-en="📖 Read Guide">📖 查看技能</a>
+          <a class="btn btn-eco" href="/seedance.html" target="_blank" data-zh="馃摉 鏌ョ湅鎶€鑳? data-en="馃摉 Read Guide">馃摉 鏌ョ湅鎶€鑳?/a>
         </div>
 
         <div class="eco-card" style="display:none">
-          <div class="eco-icon">🦞</div>
+          <div class="eco-icon">馃</div>
           <div class="eco-info">
             <div class="eco-domain">imaclaw.github.io</div>
-            <div class="eco-title" data-zh="全能创作套件" data-en="All-in-One Creative Kit">全能创作套件</div>
-            <div class="eco-desc" data-zh="Yuki精选 · 生图·生视频·音乐·社媒全覆盖，一个 API Key 解锁 40+ AI 能力，免费开源。" data-en="Yuki's pick · Image, video, music & social media. One API Key for 40+ AI capabilities, free & open source.">Yuki精选 · 生图·生视频·音乐·社媒全覆盖，一个 API Key 解锁 40+ AI 能力，免费开源。</div>
+            <div class="eco-title" data-zh="鍏ㄨ兘鍒涗綔濂椾欢" data-en="All-in-One Creative Kit">鍏ㄨ兘鍒涗綔濂椾欢</div>
+            <div class="eco-desc" data-zh="Yuki绮鹃€?路 鐢熷浘路鐢熻棰懧烽煶涔惵风ぞ濯掑叏瑕嗙洊锛屼竴涓?API Key 瑙ｉ攣 40+ AI 鑳藉姏锛屽厤璐瑰紑婧愩€? data-en="Yuki's pick 路 Image, video, music & social media. One API Key for 40+ AI capabilities, free & open source.">Yuki绮鹃€?路 鐢熷浘路鐢熻棰懧烽煶涔惵风ぞ濯掑叏瑕嗙洊锛屼竴涓?API Key 瑙ｉ攣 40+ AI 鑳藉姏锛屽厤璐瑰紑婧愩€?/div>
           </div>
-          <a class="btn btn-eco" href="https://imaclaw.github.io/ima-claw/adopt/" target="_blank" data-zh="🦞 免费领养" data-en="🦞 Free Adopt">🦞 免费领养</a>
+          <a class="btn btn-eco" href="https://imaclaw.github.io/ima-claw/adopt/" target="_blank" data-zh="馃 鍏嶈垂棰嗗吇" data-en="馃 Free Adopt">馃 鍏嶈垂棰嗗吇</a>
         </div>
 
       </div>
     </div>
 
-    <!-- 多Agent配置卡片 -->
+    <!-- 澶欰gent閰嶇疆鍗＄墖 -->
     <div class="eco-section" style="padding-top:0">
       <div class="eco-divider">
-        <span class="eco-label" data-zh="进阶配置" data-en="Advanced Setup">进阶配置</span>
+        <span class="eco-label" data-zh="杩涢樁閰嶇疆" data-en="Advanced Setup">杩涢樁閰嶇疆</span>
       </div>
-      <div class="agent-config-card" onclick="copyAgentPrompt()" title="一键复制配置提示词">
+      <div class="agent-config-card" onclick="copyAgentPrompt()" title="涓€閿鍒堕厤缃彁绀鸿瘝">
         <div class="agent-config-left">
-          <div class="eco-icon">🤖</div>
+          <div class="eco-icon">馃</div>
           <div class="eco-info">
             <div class="eco-domain">cmcm.bot/multi-agent</div>
-            <div class="eco-title" data-zh="多 Agent 配置" data-en="Multi-Agent Setup">多 Agent 配置</div>
-            <div class="eco-desc" data-zh="让你的 Bot 学习如何帮你配置多角色智能体团队 — 总指挥 · 小秘书 · 工程师 · 情报官……" data-en="Teach your Bot to configure a multi-role AI team — Commander · Secretary · Engineer · Analyst…">让你的 Bot 学习如何帮你配置多角色智能体团队 — 总指挥 · 小秘书 · 工程师 · 情报官……</div>
+            <div class="eco-title" data-zh="澶?Agent 閰嶇疆" data-en="Multi-Agent Setup">澶?Agent 閰嶇疆</div>
+            <div class="eco-desc" data-zh="璁╀綘鐨?Bot 瀛︿範濡備綍甯綘閰嶇疆澶氳鑹叉櫤鑳戒綋鍥㈤槦 鈥?鎬绘寚鎸?路 灏忕涔?路 宸ョ▼甯?路 鎯呮姤瀹樷€︹€? data-en="Teach your Bot to configure a multi-role AI team 鈥?Commander 路 Secretary 路 Engineer 路 Analyst鈥?>璁╀綘鐨?Bot 瀛︿範濡備綍甯綘閰嶇疆澶氳鑹叉櫤鑳戒綋鍥㈤槦 鈥?鎬绘寚鎸?路 灏忕涔?路 宸ョ▼甯?路 鎯呮姤瀹樷€︹€?/div>
           </div>
         </div>
         <div class="agent-config-right">
-          <button class="btn-copy" id="copyBtn" data-zh="📋 一键复制提示词" data-en="📋 Copy Prompt">📋 一键复制提示词</button>
-          <div class="copy-hint" id="copyHint" data-zh="已复制！请直接发给你的 Bot 即可 🎉" data-en="Copied! Send it to your Bot 🎉">已复制！请直接发给你的 Bot 即可 🎉</div>
+          <button class="btn-copy" id="copyBtn" data-zh="馃搵 涓€閿鍒舵彁绀鸿瘝" data-en="馃搵 Copy Prompt">馃搵 涓€閿鍒舵彁绀鸿瘝</button>
+          <div class="copy-hint" id="copyHint" data-zh="宸插鍒讹紒璇风洿鎺ュ彂缁欎綘鐨?Bot 鍗冲彲 馃帀" data-en="Copied! Send it to your Bot 馃帀">宸插鍒讹紒璇风洿鎺ュ彂缁欎綘鐨?Bot 鍗冲彲 馃帀</div>
         </div>
       </div>
     </div>
@@ -854,19 +851,19 @@
 
   <footer>
     <div class="container">
-      <p id="footer-text">© 2026 EasyClaw · Maintained by <a href="https://easyclaw.work" target="_blank">Tuantuan Bot</a> 🐱</p>
+      <p id="footer-text">漏 2026 后羿AI 路 Maintained by <a href="https://后羿AI.work" target="_blank">Tuantuan Bot</a> 馃惐</p>
     </div>
   </footer>
 
   <script>
-    // ── 语言检测 & 切换 ──
+    // 鈹€鈹€ 璇█妫€娴?& 鍒囨崲 鈹€鈹€
     const userLang = navigator.language || navigator.userLanguage || 'en';
     const isChinese = /^zh/i.test(userLang);
     let currentLang = isChinese ? 'zh' : 'en';
 
     const i18nHero = {
-      zh: { title: '选择你的 <span class="gradient">AI 龙虾</span>，开启智能新时代', sub: '全系列 AI 产品，企业云端 · 个人桌面 · 国内外版本全覆盖', pills: ['无需命令行','无需自己部署','模型自由切换','一键即用'] },
-      en: { title: 'Choose Your <span class="gradient">AI Agent</span>, Enter the New Era', sub: 'Full product lineup — Enterprise Cloud · Personal Desktop · Global & China editions', pills: ['No CLI needed','Zero deployment','Switch AI models freely','Ready to use'] },
+      zh: { title: '閫夋嫨浣犵殑 <span class="gradient">AI 榫欒櫨</span>锛屽紑鍚櫤鑳芥柊鏃朵唬', sub: '鍏ㄧ郴鍒?AI 浜у搧锛屼紒涓氫簯绔?路 涓汉妗岄潰 路 鍥藉唴澶栫増鏈叏瑕嗙洊', pills: ['鏃犻渶鍛戒护琛?,'鏃犻渶鑷繁閮ㄧ讲','妯″瀷鑷敱鍒囨崲','涓€閿嵆鐢?] },
+      en: { title: 'Choose Your <span class="gradient">AI Assistant</span>, Enter the New Era', sub: 'Full product lineup 鈥?Enterprise Cloud 路 Personal Desktop 路 Global & China editions', pills: ['No CLI needed','Zero deployment','Switch AI models freely','Ready to use'] },
     };
 
     function applyLang(lang) {
@@ -883,30 +880,27 @@
           else el.innerHTML = val;
         }
       });
-      // 英文模式隐藏元气AI（国内版卡片）
-      document.querySelectorAll('.card-cn').forEach(el => {
+      // 鑻辨枃妯″紡闅愯棌鍏冩皵AI锛堝浗鍐呯増鍗＄墖锛?      document.querySelectorAll('.card-cn').forEach(el => {
         el.style.display = lang === 'en' ? 'none' : '';
       });
-      // 英文模式只剩2张卡，平分宽度
-      const cardsGrid = document.querySelector('.cards');
+      // 鑻辨枃妯″紡鍙墿2寮犲崱锛屽钩鍒嗗搴?      const cardsGrid = document.querySelector('.cards');
       if (window.innerWidth >= 900) {
         cardsGrid.style.gridTemplateColumns = lang === 'en' ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)';
         cardsGrid.style.maxWidth = lang === 'en' ? '860px' : '';
         cardsGrid.style.margin = lang === 'en' ? '0 auto' : '';
       }
       if (lang === 'en') {
-        document.getElementById('footer-text').innerHTML = '© 2026 EasyClaw · Maintained by <a href="https://easyclaw.work" target="_blank">Tuantuan Bot</a> 🐱';
+        document.getElementById('footer-text').innerHTML = '漏 2026 后羿AI 路 Maintained by <a href="https://后羿AI.work" target="_blank">Tuantuan Bot</a> 馃惐';
       }
     }
 
     function toggleLang() {
       const newLang = currentLang === 'zh' ? 'en' : 'zh';
       applyLang(newLang);
-      document.getElementById('langToggle').textContent = newLang === 'zh' ? 'EN' : '中文';
+      document.getElementById('langToggle').textContent = newLang === 'zh' ? 'EN' : '涓枃';
     }
 
-    // 初始化按钮文字
-    document.getElementById('langToggle').textContent = currentLang === 'zh' ? 'EN' : '中文';
+    // 鍒濆鍖栨寜閽枃瀛?    document.getElementById('langToggle').textContent = currentLang === 'zh' ? 'EN' : '涓枃';
     const container = document.getElementById('particles');
     const colors = ['#ff4500', '#ff6b35', '#ff8c42', '#ffa552', '#ffb347'];
     for (let i = 0; i < 18; i++) {
@@ -923,7 +917,7 @@
       container.appendChild(p);
     }
 
-    // 主题切换逻辑
+    // 涓婚鍒囨崲閫昏緫
     const html = document.documentElement;
     const btn = document.getElementById('themeToggle');
     const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
@@ -936,7 +930,7 @@
 
     function applyTheme(theme) {
       html.setAttribute('data-theme', theme);
-      btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+      btn.textContent = theme === 'dark' ? '鈽€锔? : '馃寵';
     }
 
     applyTheme(getEffectiveTheme());
@@ -952,19 +946,19 @@
       if (!localStorage.getItem('theme')) applyTheme(getEffectiveTheme());
     });
 
-    // from=easyclaw_welcome 参数处理
+    // from=后羿AI_welcome 鍙傛暟澶勭悊
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('from') === 'easyclaw_welcome') {
+    if (urlParams.get('from') === '后羿AI_welcome') {
       document.querySelectorAll('.card-intl, .card-cn').forEach(el => el.style.display = 'none');
       document.querySelector('.cards').style.gridTemplateColumns = '1fr';
       document.querySelector('.cards').style.maxWidth = '100%';
       document.querySelector('.cards').style.margin = '0 auto';
     }
 
-    // 多Agent提示词复制 — 导流到 EasyClaw 登录
+    // 澶欰gent鎻愮ず璇嶅鍒?鈥?瀵兼祦鍒?后羿AI 鐧诲綍
     function copyAgentPrompt() {
-      if (confirm('多 Agent 配置需要登录 EasyClaw 才能使用。\n\n点击确定前往登录页面。')) {
-        window.open('https://easyclaw.work/zh-CN/login', '_blank');
+      if (confirm('澶?Agent 閰嶇疆闇€瑕佺櫥褰?后羿AI 鎵嶈兘浣跨敤銆俓n\n鐐瑰嚮纭畾鍓嶅線鐧诲綍椤甸潰銆?)) {
+        window.open('https://后羿AI.work/zh-CN/login', '_blank');
       }
     }
   </script>
@@ -974,7 +968,7 @@
   <div onclick="event.stopPropagation()" style="background:#fff;border-radius:16px;padding:28px 32px;text-align:center;max-width:90vw;">
     <div id="qr-modal-title" style="font-size:15px;font-weight:600;color:#2d2926;margin-bottom:16px;"></div>
     <img id="qr-modal-img" src="" style="width:min(260px,70vw);height:min(260px,70vw);border-radius:8px;display:block;">
-    <div style="margin-top:14px;font-size:12px;color:#999;">扫码加入，点击空白处关闭</div>
+    <div style="margin-top:14px;font-size:12px;color:#999;">鎵爜鍔犲叆锛岀偣鍑荤┖鐧藉鍏抽棴</div>
   </div>
 </div>
 <script>
@@ -988,3 +982,6 @@ document.getElementById('qr-modal').addEventListener('click', function(){ this.s
 </script>
 </body>
 </html>
+
+
+
